@@ -11,7 +11,7 @@ class WallTrace():
         self.sensor_values = LightSensorValues()
         rospy.Subscriber('/lightsensors', LightSensorValues, self.callback)
 
-    def callback_lightsensors(self,messages):
+    def callback(self,messages):
         self.sensor_values = messages
 
     def run(self):
