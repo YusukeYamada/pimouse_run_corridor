@@ -18,7 +18,7 @@ class WallStopTest(unittest.TestCase):
         return left, right
 
     def test_io(self):
-        left, right = self.set_and_get(400,0,0,100) #total: 600
+        left, right = self.set_and_get(400,0,0,100) #total: 500
         self.assertTrue(left == right == 0,"can't stop")
 
         left, right = self.set_and_get(0,5,1000,0) #side direction is not a trigger of stop
