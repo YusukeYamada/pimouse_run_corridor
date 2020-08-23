@@ -30,7 +30,8 @@ class WallStopTest(unittest.TestCase):
         left, right = self.set_and_get(0,200,0,0,) #curve to right
         self.assertTrue(left > right, "don't curve to right")
 
-        left, right = self.set_and_get(0,5,0,0) #don't control when far from a wall self.assertTrue(0 < left == right, "curve wrongly")
+        left, right = self.set_and_get(0,5,0,0) #don't control when far from a wall 
+        self.assertTrue(0 < left == right, "curve wrongly")
 
 if __name__ == '__main__':
     time.sleep(3)
