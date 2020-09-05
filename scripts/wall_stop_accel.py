@@ -23,8 +23,8 @@ class WallStop():
         while not rospy.is_shutdown():
             data.linear.x += accel
 
-            if self.sensor_values.sum_all >= 50: data.linear.x = 0.0
-            elif data.linear.x <= 0.2:           data.linear.x = 0.2
+            if self.sensor_values.sum_all >= 500: data.linear.x = 0.0
+            elif data.linear.x <= 0.05:           data.linear.x = 0.05
             elif data.linear.x >= 0.8:           data.linear.x = 0.8
             
             self.cmd_vel.publish(data)
