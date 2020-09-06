@@ -1,18 +1,18 @@
-#!/usr/bin/env python
-import rospy,copy,math
-from geometry_msgs.msg import Twist
-from std_srvs.srv import Trigger, TriggerResponse
-from pimouse_ros.msg import LightSensorValues
+#!/usr/bin/env python  #wall_around.pyの形式で実行できるようにするためのもの
+import rospy,copy,math　#Python用のROSの基本ライブラリのrospyをmathをコピーして読み込む文のこと
+from geometry_msgs.msg import Twist　#geometry_msgsパッケージの下のmsgパッケージからTwist型を読み込む
+from std_srvs.srv import Trigger, TriggerResponse　#std_srvsパッケージの下のsrvパッケージからTriggerRseponseを読み込む
+from pimouse_ros.msg import LightSensorValues　#pimouse_rosパッケージの下のmsgパッケージからLightSensorValuesを読み込む
 
-class WallAround():
-    def __init__(self):
-        self.cmd_vel = rospy.Publisher('/cmd_vel',Twist,queue_size=1)
+class WallAround():　#WallAroundというクラスを定義
+    def __init__(self):　#__init__という関数でこれがコンストラクタ(クラスのオブジェクトを作成するときに初期化を行うための関数)となる
+        self.cmd_vel = rospy.Publisher('/cmd_vel',Twist,queue_size=1)　#ノードがマスターに対してcmd_velのメッセージでトピック'/cmd_velを配信する宣言
 
-        self.sensor_values = LightSensorValues()
-        rospy.Subscriber('/lightsensors', LightSensorValues, self.callback)
+        self.sensor_values = LightSensorValues()　#sensor_valuesのメッセージでトピックLightsSensorValuesを配信する
+        rospy.Subscriber('/lightsensors', LightSensorValues, self.callback) #トピック'/lightsensorsを受信するとcallback関数を実行
 
-    def callback(self,messages):
-        self.sensor_values = messages
+    def callback(self,messages):　#指定したトピックであるlightsensorsを受信するたびにcallbackを実行
+        self.sensor_values = messages　#メッセージはセンサーの値で配信
 
     def wall_front(self,ls):
         
